@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones de Logos con CSS</title>
+    <style>
+        /* Estilos generales para el cuerpo de la página */
+        body {
+            display: flex; /* Habilita Flexbox para un centrado fácil */
+            flex-direction: column; /* Apila los elementos verticalmente (título sobre el contenedor) */
+            align-items: center; /* Centra los elementos horizontalmente */
+            justify-content: center; /* Centra los elementos verticalmente */
+            min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la pantalla */
+            margin: 0; /* Elimina el margen por defecto del navegador */
+            font-family: Arial, sans-serif; /* Define la fuente para el texto */
+            background-color: #f4f4f4; /* Color de fondo gris claro */
+            gap: 40px; /* Espacio entre el título y el contenedor de logos */
+        }
+
+        /* Estilos para el título principal */
+        h1 {
+            color: #333; /* Color de texto oscuro */
+            margin-bottom: 20px; /* Espacio adicional debajo del título */
+        }
+
+        /* Contenedor principal para todos los logos */
+        .container {
+            display: flex; /* Usa Flexbox para alinear los logos */
+            gap: 60px; /* Espacio entre cada logo */
+            flex-wrap: wrap; /* Permite que los logos pasen a la siguiente línea si no caben */
+            justify-content: center; /* Centra los logos en el contenedor */
+        }
+
+        /* Estilos para cada tarjeta individual que contiene un logo y texto */
+        .graphic-item {
+            display: flex; /* Usa Flexbox para alinear el logo y el texto dentro de la tarjeta */
+            flex-direction: column; /* Apila el logo sobre el texto */
+            align-items: center; /* Centra el contenido de la tarjeta horizontalmente */
+            gap: 15px; /* Espacio entre el logo y el texto */
+            padding: 20px; /* Relleno interior de la tarjeta */
+            background-color: #fff; /* Fondo blanco para la tarjeta */
+            border-radius: 12px; /* Esquinas redondeadas */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra suave para dar profundidad */
+            transition: transform 0.3s ease-in-out; /* Transición suave para el efecto hover */
+        }
+
+        /* Efecto al pasar el mouse sobre una tarjeta: se eleva ligeramente */
+        .graphic-item:hover {
+            transform: translateY(-10px); /* Mueve la tarjeta 10px hacia arriba */
+        }
+
+        /* Estilos para la imagen (logo) dentro de cada tarjeta */
+        .graphic-item img {
+            width: 120px; /* Ancho fijo para el logo */
+            height: 120px; /* Alto fijo para el logo */
+        }
+
+        /* Animación de rotación para el logo */
+        .rotate-logo img {
+            transform-origin: center; /* Asegura que la rotación sea desde el centro */
+            animation: svgRotate 4s linear infinite; /* Aplica la animación 'svgRotate' de forma continua */
+        }
+
+        /* Define los fotogramas clave para la animación 'svgRotate' */
+        @keyframes svgRotate {
+            from { transform: rotate(0deg); } /* Estado inicial: sin rotación */
+            to { transform: rotate(360deg); } /* Estado final: rotación completa de 360 grados */
+        }
+
+        /* Animación de escala para el logo */
+        .scale-logo img {
+            transform-origin: center; /* El escalado se origina desde el centro */
+            animation: svgScale 3s ease-in-out infinite alternate; /* Aplica 'svgScale' de ida y vuelta */
+        }
+
+        /* Define los fotogramas clave para la animación 'svgScale' */
+        @keyframes svgScale {
+            from { transform: scale(1); } /* Estado inicial: tamaño original */
+            to { transform: scale(1.3); } /* Estado final: 30% más grande */
+        }
+
+        /* Animación de movimiento para el logo */
+        .move-logo img {
+            transform-origin: center; /* El movimiento se origina desde el centro */
+            animation: svgMove 3.5s ease-in-out infinite alternate; /* Aplica 'svgMove' de ida y vuelta */
+        }
+
+        /* Define los fotogramas clave para la animación 'svgMove' */
+        @keyframes svgMove {
+            from { transform: translateX(-20px); } /* Estado inicial: 20px a la izquierda */
+            to { transform: translateX(20px); } /* Estado final: 20px a la derecha */
+        }
+
+        /* Animación de color para el logo */
+        .color-logo img {
+            animation: changeColor 5s infinite alternate; /* Aplica 'changeColor' de ida y vuelta */
+        }
+
+        @keyframes changeColor {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(360deg); }
+        }
+
+        /* Animación de "shake" para el logo */
+        .shake-logo img {
+            animation: shake 0.8s cubic-bezier(.36,.07,.19,.97) infinite; /* Aplica la animación 'shake' */
+        }
+
+        /* Define los fotogramas clave para la animación 'shake' (vibración) */
+        @keyframes shake {
+            10%, 90% { transform: translateX(-1px); } /* Pequeños movimientos a la izquierda y derecha */
+            20%, 80% { transform: translateX(2px); } /* en diferentes momentos de la animación */
+            30%, 50%, 70% { transform: translateX(-3px); } /* para crear un efecto de vibración. */
+            40%, 60% { transform: translateX(3px); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Animaciones de Logos con CSS</h1> <!-- Título principal de la página -->
+
+    <div class="container"> <!-- Contenedor para todos los elementos gráficos -->
+        <!-- Logo con animación de rotación -->
+        <div class="graphic-item rotate-logo"> <!-- Tarjeta con la clase de animación 'rotate-logo' -->
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/googlechrome.svg" alt="Logo de Google Chrome"> <!-- Imagen del logo -->
+            <p>Logo Rotatorio</p> <!-- Texto descriptivo -->
+        </div>
+
+        <!-- Logo con animación de escala -->
+        <div class="graphic-item scale-logo"> <!-- Tarjeta con la clase de animación 'scale-logo' -->
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/visualstudiocode.svg" alt="Logo de Visual Studio Code">
+            <p>Logo con Escala</p>
+        </div>
+
+        <!-- Logo con animación de movimiento -->
+        <div class="graphic-item move-logo"> <!-- Tarjeta con la clase de animación 'move-logo' -->
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/github.svg" alt="Logo de GitHub">
+            <p>Logo en Movimiento</p>
+        </div>
+
+        <!-- Logo con animación de color -->
+        <div class="graphic-item color-logo"> <!-- Tarjeta con la clase de animación 'color-logo' -->
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/firefox.svg" alt="Logo de Firefox">
+            <p>Logo Cambia Color</p>
+        </div>
+
+        <!-- Logo con animación de "shake" -->
+        <div class="graphic-item shake-logo"> <!-- Tarjeta con la clase de animación 'shake-logo' -->
+            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/html5.svg" alt="Logo de HTML5">
+            <p>Logo con "Shake"</p>
+        </div>
+    </div>
+</body>
+</html>
